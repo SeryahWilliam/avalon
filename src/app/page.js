@@ -9,11 +9,20 @@ export default function Home() {
     { title: "Gifts for Her", image: "/images/her.jpeg" },
     { title: "Wedding Gifts", image: "/images/wedding.jpg" },
   ];
+
+  const subcategories = [
+    { title: "Bath & Bedding", image: "/images/bath.jpeg" },
+  ];
   return (
     <div>
-      <h1>Avalon</h1>
+      <h1 className="italic font-extrabold text-5xl">Avalon</h1>
       <div>
         <h4>Stuff</h4>
+        <div className="flex flex-row flex-wrap">
+          {subcategories.map((subcategory) => (
+            <CategoryCard title={subcategory.title} img={subcategory.image} />
+          ))}
+        </div>
       </div>
       <h2>Shop Popular Categories</h2>
       <div className="flex flex-row flex-wrap">
