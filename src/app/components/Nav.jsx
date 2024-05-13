@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Nav() {
-  return (
-    <div>Nav</div>
-  )
+  return <div className="fixed top-0 h-24 mb-10">Nav</div>;
 }
 
-export default Nav
+export default Nav;
