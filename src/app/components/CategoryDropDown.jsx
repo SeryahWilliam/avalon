@@ -20,7 +20,7 @@ function CategoryDropDown() {
       {isOpen && (
         <ul className="absolute p-4 w-60 z-10 top-full left-0 bg-white border border-gray-300 rounded-lg shadow-lg text-black">
           {categories.map((category, idx) => (
-            <Link href={`/${category.title}`}>
+            <Link key={idx} href={`/${category.title.toLowerCase()}`}>
               <li
                 key={idx}
                 className="py-2 px-4 cursor-pointer hover:bg-gray-100"

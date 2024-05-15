@@ -29,6 +29,7 @@ export default function Home() {
             key={index}
             title={category.title}
             img={category.image}
+            display={category.display}
           />
         ))}
       </div>
