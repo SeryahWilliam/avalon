@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import Search from "./Search";
+import CategoryDropDown from "./CategoryDropDown";
 
 function Nav() {
   return (
@@ -13,6 +14,7 @@ function Nav() {
             Avalon
           </Link>
         </h1>
+        <CategoryDropDown/>
         <Search />
         <div className="flex ">
           <Link className="mx-4 hover:text-orange-500" href="/login">
