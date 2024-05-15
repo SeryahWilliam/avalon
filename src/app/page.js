@@ -1,4 +1,5 @@
 import CategoryCard from "./components/CategoryCard";
+import SubcategoryCard from "./components/SubcategoryCard";
 
 export default function Home() {
   const categories = [
@@ -12,22 +13,30 @@ export default function Home() {
 
   const subcategories = [
     { title: "Bath & Bedding", image: "/images/bath.jpeg" },
+    { title: "Gifts for Dad", image: "/images/gifts-for-dad.jpeg" },
+    { title: "Birthday Gifts", image: "/images/birthday-gifts.jpeg" },
+    { title: "Anniversary Gifts", image: "/images/anniversary-gifts.jpeg" },
+    {
+      title: "Wedding & Engagement Gifts",
+      image: "/images/wedding-gifts.jpeg",
+    },
+    { title: "Home Gifts", image: "/images/home-gifts.jpeg" },
   ];
+
   return (
     <div>
-      <h1 className="italic font-extrabold text-5xl">Avalon</h1>
-      <div>
-        <h4>Stuff</h4>
-        <div className="flex flex-row flex-wrap">
-          {subcategories.map((subcategory) => (
-            <CategoryCard title={subcategory.title} img={subcategory.image} />
-          ))}
-        </div>
+      <h4>Stuff</h4>
+      <div className="">
+        <SubcategoryCard subcategories={subcategories} />
       </div>
       <h2>Shop Popular Categories</h2>
       <div className="flex flex-row flex-wrap">
-        {categories.map((category) => (
-          <CategoryCard title={category.title} img={category.image} />
+        {categories.map((category, index) => (
+          <CategoryCard
+            key={index}
+            title={category.title}
+            img={category.image}
+          />
         ))}
       </div>
     </div>
