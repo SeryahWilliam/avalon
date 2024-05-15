@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="fixed inset-x-0 bottom-0 bg-gray-800 text-white p-4">
+    <div className="fixed inset-x-0 bottom-0 bg-blue-800 text-white p-4">
       <div className="flex justify-evenly">
         <div>
           <a href="/shop" className="block hover:text-gray-300">

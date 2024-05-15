@@ -13,23 +13,24 @@ export default function Home() {
 
   const subcategories = [
     { title: "Bath & Bedding", image: "/images/bath.jpeg" },
-    { title: "Gifts for Dad", image: "/images/gifts-for-dad.jpeg" },
-    { title: "Birthday Gifts", image: "/images/birthday-gifts.jpeg" },
-    { title: "Anniversary Gifts", image: "/images/anniversary-gifts.jpeg" },
-    {
-      title: "Wedding & Engagement Gifts",
-      image: "/images/wedding-gifts.jpeg",
-    },
-    { title: "Home Gifts", image: "/images/home-gifts.jpeg" },
+    { title: "Home Decor", image: "/images/decor.jpeg" },
+    { title: "Electronics", image: "/images/elec.webp" },
+    { title: "Accessories", image: "/images/accessories.jpeg" },
+    { title: "Shoes", image: "/images/shoes.webp" },
+    { title: "Kids", image: "/images/kids.jpeg" },
   ];
 
   return (
-    <div>
-      <h4>Stuff</h4>
-      <div className="">
+    <div className="m-8 flex flex-col justify-center">
+      <h2 className="w-full text-center text-3xl text-gray-800 leading-none tracking-tight">
+        Discover Unique Treasures from Independent Sellers!
+      </h2>
+      <div className="mb-12">
         <SubcategoryCard subcategories={subcategories} />
       </div>
-      <h2>Shop Popular Categories</h2>
+      <h2 className="w-full text-center mb-4 text-center text-3xl text-gray-800 leading-none tracking-tight font-semibold">
+        Shop Popular Categories
+      </h2>
       <div className="flex flex-row flex-wrap">
         {categories.map((category, index) => (
           <CategoryCard
