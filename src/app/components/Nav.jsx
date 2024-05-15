@@ -1,5 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
 
 function Nav() {
   return (
@@ -10,15 +12,16 @@ function Nav() {
             Avalon
           </Link>
         </h1>
-        <div>
-          <Link className="mx-4 hover:text-orange-500" href="/shop">
-            Shop
+        <div className="flex ">
+          <Link className="mx-4 hover:text-orange-500" href="/login">
+            Sign In
           </Link>
+          {/* <FontAwesomeIcon icon={faHeart} size="md" /> */}
           <Link className="mx-4 hover:text-orange-500" href="/about">
             About
           </Link>
-          <Link className="mx-4 hover:text-orange-500" href="/contact">
-            Contact
+          <Link className="mx-4 hover:text-orange-500" href="/cart">
+            Cart
           </Link>
         </div>
       </div>
