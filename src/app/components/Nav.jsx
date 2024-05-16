@@ -15,6 +15,9 @@ function Nav() {
           alt="Logo"
         />
       </Navbar.Brand>
+      <div>
+      <Search/>
+      </div>
       <div className="flex md:order-2">
         <Dropdown
           arrowIcon={false}
