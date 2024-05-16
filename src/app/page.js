@@ -26,13 +26,13 @@ export default function Home() {
 
   return (
     <div className="m-8 flex flex-col justify-center">
-      <h2 className="w-full text-center text-3xl text-gray-800 leading-none tracking-tight">
+      <h2 className="w-full text-center text-xl text-gray-800 leading-none tracking-tight">
         Discover Unique Treasures from Independent Sellers!
       </h2>
       <div className="mb-12">
         <SubcategoryCard subcategories={subcategories} />
       </div>
-      <h2 className="w-full text-center mb-4 text-center text-3xl text-gray-800 leading-none tracking-tight font-semibold">
+      <h2 className="w-full text-center mb-4 text-center text-xl text-gray-800 leading-none tracking-tight font-semibold">
         Shop Popular Categories
       </h2>
       <div className="flex flex-row flex-wrap">
