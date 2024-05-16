@@ -4,13 +4,8 @@ import { useParams } from "next/navigation";
 import SubcategoryCard from "@/app/components/SubcategoryCard";
 
 function CategoryPage() {
-  // const { categoryId } = useParams();
-  // return (
-  //   <div>
-  //     {categoryId}
-  //     <SubcategoryCard subcategories={subcategories} />
-  //   </div>
-  // );
+  const { categoryId } = useParams();
+  return <div>{categoryId}</div>;
 }
 
 export default CategoryPage;

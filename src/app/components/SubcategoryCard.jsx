@@ -5,7 +5,10 @@ function SubcategoryCard({ subcategories }) {
   return (
     <div className="flex justify-around items-center bg-white py-8 overflow-x-auto">
       {subcategories.map((subcategory, index) => (
-        <Link key={index} href={`/${subcategory.title.toLowerCase()}`}>
+        <Link
+          key={index}
+          href={`/categories/${subcategory.title.toLowerCase()}`}
+        >
           <div key={index} className="flex flex-col items-center mx-4">
             <div className="w-32 h-32 bg-gray-200 rounded-full overflow-hidden">
               <img
