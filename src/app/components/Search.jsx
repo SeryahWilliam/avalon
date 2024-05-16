@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { TextInput } from "flowbite-react";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { BsSearch } from "react-icons/bs";
 
 function Search() {
   return (
@@ -12,6 +12,7 @@ function Search() {
         type="email"
         placeholder="Search..."
         className="w-[40vw]"
+        icon={BsSearch}
       />
     </div>
   );
