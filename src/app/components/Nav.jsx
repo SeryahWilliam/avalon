@@ -7,7 +7,7 @@ import { Avatar, Dropdown, Navbar } from "flowbite-react";
 
 function Nav() {
   return (
-    <Navbar className="bg-blue-800 " fluid rounded>
+    <Navbar className="bg-blue-800 " fluid>
       <Navbar.Brand href="https://flowbite-react.com">
         <img
           src="/images/logo.png"
@@ -16,7 +16,7 @@ function Nav() {
         />
       </Navbar.Brand>
       <div>
-      <Search/>
+        <Search />
       </div>
       <div className="flex md:order-2">
         <Dropdown

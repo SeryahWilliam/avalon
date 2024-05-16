@@ -5,7 +5,7 @@ import { BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
 
 function MyFooter() {
   return (
-    <Footer className="mt-40 border-t-4  fixed bottom-0" container>
+    <Footer className="border-t-2 absolute" container>
       <div className="w-full">
         <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
           <div>
