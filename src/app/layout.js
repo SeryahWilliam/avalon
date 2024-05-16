@@ -3,6 +3,7 @@ import "./globals.css";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import MyFooter from "./components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +18,7 @@ function RootLayout({ children }) {
       <body className={`${inter.className}`}>
         <Nav />
         {children}
-        <Footer />
+        <MyFooter />
       </body>
     </html>
   );

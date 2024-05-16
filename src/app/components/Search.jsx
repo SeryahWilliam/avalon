@@ -11,7 +11,7 @@ function Search() {
         id="searchbar"
         type="email"
         placeholder="Search..."
-        className="w-80"
+        className="w-[40vw]"
       />
     </div>
   );

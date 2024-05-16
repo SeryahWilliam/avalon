@@ -1,62 +1,55 @@
+"use client";
 import React from "react";
+import { Footer } from "flowbite-react";
+import { BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
 
-function Footer() {
+function MyFooter() {
   return (
-    <div className="fixed inset-x-0 bottom-0 bg-blue-800 text-white p-4">
-      <div className="flex justify-evenly">
-        <div>
-          <a href="/shop" className="block hover:text-gray-300">
-            Shop
-          </a>
-        </div>
-        <div>
-          <a href="/sell" className="block hover:text-gray-300">
-            Sell
-          </a>
-        </div>
-        <div className="relative group">
-          <span className="cursor-pointer">About</span>
-          <div className="absolute hidden group-hover:block bg-gray-700 mt-1">
-            <a
-              href="/about/policies"
-              className="block px-4 py-2 hover:text-gray-300"
-            >
-              Policies
-            </a>
-            <a
-              href="/about/careers"
-              className="block px-4 py-2 hover:text-gray-300"
-            >
-              Careers
-            </a>
-            <a
-              href="/about/investors"
-              className="block px-4 py-2 hover:text-gray-300"
-            >
-              Investors
-            </a>
+    <Footer className="mt-40 border-t-4" container>
+      <div className="w-full">
+        <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
+          <div>
+            <span className="text-4xl font-semibold text-custom-orange">
+              Avalon
+            </span>
+          </div>
+          <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
+            <div>
+              <Footer.Title title="about" />
+              <Footer.LinkGroup col>
+                <Footer.Link href="/">Avalon</Footer.Link>
+                <Footer.Link href="/contact">Contact</Footer.Link>
+              </Footer.LinkGroup>
+            </div>
+            <div>
+              <Footer.Title title="Follow us" />
+              <Footer.LinkGroup col>
+                <Footer.Link href="#">Github</Footer.Link>
+                <Footer.Link href="#">Instagram</Footer.Link>
+              </Footer.LinkGroup>
+            </div>
+            <div>
+              <Footer.Title title="Legal" />
+              <Footer.LinkGroup col>
+                <Footer.Link href="#">Privacy Policy</Footer.Link>
+                <Footer.Link href="#">Terms &amp; Conditions</Footer.Link>
+              </Footer.LinkGroup>
+            </div>
           </div>
         </div>
-        <div className="relative group">
-          <span className="cursor-pointer">Help</span>
-          <div className="absolute hidden group-hover:block bg-gray-700 mt-1">
-            <a
-              href="/help/help-center"
-              className="block px-4 py-2 hover:text-gray-300"
-            >
-              Help Center
-            </a>
-            <a
-              href="/help/privacy-settings"
-              className="block px-4 py-2 hover:text-gray-300"
-            >
-              Privacy Settings
-            </a>
+        <Footer.Divider />
+        <div className="w-full sm:flex sm:items-center sm:justify-between">
+          <Footer.Copyright href="#" by="Avalon™" year={2024} />
+          <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
+            <Footer.Icon href="#" icon={BsFacebook} />
+            <Footer.Icon href="#" icon={BsInstagram} />
+            <Footer.Icon href="#" icon={BsTwitter} />
+            <Footer.Icon href="#" icon={BsGithub} />
           </div>
         </div>
       </div>
-    </div>
+    </Footer>
   );
 }
 
-export default Footer;
+export default MyFooter;
