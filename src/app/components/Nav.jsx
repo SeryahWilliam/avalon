@@ -1,35 +1,71 @@
+"use client";
 import React from "react";
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import Search from "./Search";
 import CategoryDropDown from "./CategoryDropDown";
+import { Avatar, Dropdown, Navbar } from "flowbite-react";
 
 function Nav() {
   return (
-    <nav className="fixed top-0 w-full bg-blue-800 text-white p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <h1 className="font-bold text-xl">
-          <Link className="text-orange-500 hover:text-orange-300" href="/">
-            Avalon
-          </Link>
-        </h1>
-        <CategoryDropDown/>
-        <Search />
-        <div className="flex ">
-          <Link className="mx-4 hover:text-orange-500" href="/login">
-            Sign In
-          </Link>
-          {/* <FontAwesomeIcon icon={faHeart} size="md" /> */}
-          <Link className="mx-4 hover:text-orange-500" href="/about">
-            About
-          </Link>
-          <Link className="mx-4 hover:text-orange-500" href="/cart">
-            Cart
-          </Link>
-        </div>
+    <Navbar className="bg-blue-800 " fluid rounded>
+      <Navbar.Brand href="https://flowbite-react.com">
+        <img
+          src="/images/logo.png"
+          className="mr-3 h-12 sm:w-40 sm:h-16"
+          alt="Logo"
+        />
+      </Navbar.Brand>
+      <div className="flex md:order-2">
+        <Dropdown
+          arrowIcon={false}
+          inline
+          label={
+            <Avatar
+              alt="User settings"
+              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+              rounded
+            />
+          }
+        >
+          <Dropdown.Header>
+            <span className="block text-sm">Bonnie Green</span>
+            <span className="block truncate text-sm font-medium">
+              name@flowbite.com
+            </span>
+          </Dropdown.Header>
+          <Dropdown.Item>Dashboard</Dropdown.Item>
+          <Dropdown.Item>Settings</Dropdown.Item>
+          <Dropdown.Item>Earnings</Dropdown.Item>
+          <Dropdown.Divider />
+          <Dropdown.Item>Sign out</Dropdown.Item>
+        </Dropdown>
+        <Navbar.Toggle />
       </div>
-    </nav>
+      <Navbar.Collapse>
+        <Navbar.Link
+          className="!text-white hover:!text-orange-500"
+          href="/"
+          active
+        >
+          Home
+        </Navbar.Link>
+        <Navbar.Link
+          className="text-white hover:!text-orange-500"
+          href="/about"
+        >
+          About
+        </Navbar.Link>
+        <Navbar.Link
+          className="text-white hover:!text-orange-500"
+          href="/favorites"
+        >
+          Favorites
+        </Navbar.Link>
+        <Navbar.Link className="text-white hover:!text-orange-500" href="cart">
+          Cart
+        </Navbar.Link>
+      </Navbar.Collapse>
+    </Navbar>
   );
 }
 

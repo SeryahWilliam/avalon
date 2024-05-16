@@ -14,7 +14,7 @@ export const metadata = {
 function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} pt-16`}>
+      <body className={`${inter.className}`}>
         <Nav />
         {children}
         <Footer />

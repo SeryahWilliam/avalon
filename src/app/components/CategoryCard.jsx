@@ -11,7 +11,7 @@ function CategoryCard({ img, title, display }) {
             src={img}
             width={800}
             height={600}
-            objectFit="cover"
+            style={{ objectFit: "cover" }}
             alt=""
             className="rounded-lg"
           />
