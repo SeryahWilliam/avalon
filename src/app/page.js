@@ -4,12 +4,24 @@ import SubcategoryCard from "./components/SubcategoryCard";
 
 export default function Home() {
   const subcategories = [
-    { title: "Bath & Bedding", image: "/images/bath.jpeg" },
-    { title: "Home Decor", image: "/images/decor.jpeg" },
-    { title: "Electronics", image: "/images/elec.webp" },
-    { title: "Accessories", image: "/images/accessories.jpeg" },
-    { title: "Shoes", image: "/images/shoes.webp" },
-    { title: "Kids", image: "/images/kids.jpeg" },
+    {
+      display: "Bath & Bedding",
+      title: "bath_bedding",
+      image: "/images/bath.jpeg",
+    },
+    { display: "Home Decor", title: "home_decor", image: "/images/decor.jpeg" },
+    {
+      display: "Electronics",
+      title: "electronics",
+      image: "/images/elec.webp",
+    },
+    {
+      display: "Accessories",
+      title: "accessories",
+      image: "/images/accessories.jpeg",
+    },
+    { display: "Shoes", title: "shoes", image: "/images/shoes.webp" },
+    { display: "Kids", title: "kids", image: "/images/kids.jpeg" },
   ];
 
   return (
