@@ -4,6 +4,8 @@ import products from "@/app/productList";
 const initialState = {
   products: [],
   currentProduct: null,
+  currentPage: 1,
+  totalPages: Math.ceil(products.length / 25),
   status: "idle",
 };
 
@@ -18,7 +20,12 @@ const productSlice = createSlice({
       state.currentProduct = action.payload;
     },
     setProducts: (state, action) => {
-      state.products = action.payload;
+      state.products = action.payload.products;
+      state.currentPage = action.payload.page;
+      state.totalPages = Math.ceil(action.payload.totalProducts / 25);
+    },
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
     },
     setCurrentProduct: (state, action) => {
       state.currentProduct = action.payload;
@@ -46,6 +53,7 @@ export const {
   getProducts,
   getProduct,
   setProducts,
+  setCurrentPage,
   setCurrentProduct,
   createProduct,
   updateProduct,

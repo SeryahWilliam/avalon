@@ -7,7 +7,7 @@ import useProducts from "../hooks/useProducts";
 import Loader from "../components/Loader";
 
 function Page() {
-  const { products } = useProducts();
+  const { products, currentPage, totalPages, changePage } = useProducts();
 
   return (
     <div className="flex flex-col m-8">
@@ -23,6 +23,25 @@ function Page() {
             <ProductCard key={product.id} product_data={product} />
           ))
         )}
+      </div>
+      <div className="flex justify-center my-4">
+        <button
+          disabled={currentPage === 1}
+          onClick={() => changePage(currentPage - 1)}
+          className="px-4 py-2 mx-2 bg-gray-300 rounded disabled:opacity-50"
+        >
+          Previous
+        </button>
+        <span className="px-4 py-2">
+          {currentPage} / {totalPages}
+        </span>
+        <button
+          disabled={currentPage === totalPages}
+          onClick={() => changePage(currentPage + 1)}
+          className="px-4 py-2 mx-2 bg-gray-300 rounded disabled:opacity-50"
+        >
+          Next
+        </button>
       </div>
     </div>
   );
