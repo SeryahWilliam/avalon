@@ -28,7 +28,7 @@ export default function Home() {
 
   return (
     <div className="m-8 flex flex-col justify-center">
-      <h2 className="w-full text-center text-2xl text-gray-800 leading-none tracking-tight">
+      <h2 className="w-full text-center text-3xl text-gray-800 leading-none tracking-tight mb-4">
         Discover Unique Treasures from Independent Sellers!
       </h2>
       <div className="mb-12">

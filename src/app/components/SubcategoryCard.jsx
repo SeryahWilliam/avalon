@@ -17,7 +17,7 @@ function SubcategoryCard({ subcategories }) {
                 className="object-cover w-full h-full"
               />
             </div>
-            <p className="mt-2 text-sm text-center">{subcategory.display}</p>
+            <p className="mt-2 text-lg text-center">{subcategory.display}</p>
           </div>
         </Link>
       ))}
