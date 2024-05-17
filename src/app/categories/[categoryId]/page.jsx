@@ -1,6 +1,7 @@
 "use client";
-import { useParams } from "next/navigation";
 import React from "react";
+import { useParams } from "next/navigation";
+import SubcategoryCard from "@/app/components/SubcategoryCard";
 
 function CategoryPage() {
   const { categoryId } = useParams();
