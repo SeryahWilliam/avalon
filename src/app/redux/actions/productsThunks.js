@@ -6,8 +6,8 @@ export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async (page = 1, { dispatch }) => {
     try {
-      const start = (page - 1) * 25;
-      const end = page * 25;
+      const start = (page - 1) * 24;
+      const end = page * 24;
       const paginatedProducts = products.slice(start, end);
 
       dispatch(

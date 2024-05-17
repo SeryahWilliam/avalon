@@ -5,7 +5,7 @@ const initialState = {
   products: [],
   currentProduct: null,
   currentPage: 1,
-  totalPages: Math.ceil(products.length / 25),
+  totalPages: Math.ceil(products.length / 24),
   status: "idle",
 };
 

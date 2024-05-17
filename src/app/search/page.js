@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Filters from "../components/Filters";
 import Sort from "../components/Sort";
 import ProductCard from "../components/ProductCard";
@@ -8,9 +8,16 @@ import Loader from "../components/Loader";
 
 function Page() {
   const { products, currentPage, totalPages, changePage } = useProducts();
+  const topRef = useRef(null);
+
+  useEffect(() => {
+    if (topRef.current) {
+      topRef.current.scrollIntoView({ behavior: "auto" });
+    }
+  }, [products]);
 
   return (
-    <div className="flex flex-col m-8">
+    <div className="flex flex-col m-8" ref={topRef}>
       <div className="flex flex-row w-full justify-between my-4">
         <Filters />
         <Sort />
