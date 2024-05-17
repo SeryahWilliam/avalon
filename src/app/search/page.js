@@ -5,6 +5,7 @@ import Sort from "../components/Sort";
 import ProductCard from "../components/ProductCard";
 import useProducts from "../hooks/useProducts";
 import Loader from "../components/Loader";
+import ProtectedRoute from "../components/ProtectedRoute";
 
 function Page() {
   const { products, currentPage, totalPages, changePage } = useProducts();
