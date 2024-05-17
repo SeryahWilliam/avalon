@@ -8,7 +8,7 @@ function CategoryCard({ img, title, display }) {
   return (
     <Link key={title} href={`/categories/${title.toLowerCase()}`}>
       <Card
-        className="max-w-sm w-[15rem] m-4 h-82 hover:shadow-lg"
+        className="max-w-sm w-[14rem] m-4 h-82 hover:shadow-lg"
         imgAlt={display}
         imgSrc={img}
       >

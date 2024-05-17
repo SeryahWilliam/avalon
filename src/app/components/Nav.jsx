@@ -8,7 +8,7 @@ import { Avatar, Dropdown, Navbar } from "flowbite-react";
 function Nav() {
   return (
     <Navbar className="bg-blue-800 " fluid>
-      <Navbar.Brand href="https://flowbite-react.com">
+      <Navbar.Brand href="/">
         <img
           src="/images/logo.png"
           className="mr-3 h-12 sm:w-40 sm:h-16"
