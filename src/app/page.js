@@ -1,6 +1,8 @@
 import { categories } from "./categoryList";
 import CategoryCard from "./components/CategoryCard";
 import SubcategoryCard from "./components/SubcategoryCard";
+import CarouselComponent from "./components/Carousel";
+import images from "./carouselList";
 
 export default function Home() {
   const subcategories = [
@@ -32,6 +34,7 @@ export default function Home() {
       <div className="mb-12">
         <SubcategoryCard subcategories={subcategories} />
       </div>
+      <CarouselComponent images={images} />
       <h2 className="w-full text-center mb-4 text-center text-2xl text-gray-800 leading-none tracking-tight font-semibold">
         Shop Popular Categories
       </h2>
