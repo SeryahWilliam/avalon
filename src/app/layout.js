@@ -1,9 +1,9 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "./components/Nav";
-import Footer from "./components/Footer";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import MyFooter from "./components/Footer";
+import { Providers } from "./redux/provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,13 +14,15 @@ export const metadata = {
 
 function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className}`}>
-        <Nav />
-        {children}
-        <MyFooter />
-      </body>
-    </html>
+    <Providers>
+      <html lang="en">
+        <body className={`${inter.className}`}>
+          <Nav />
+          {children}
+          <MyFooter />
+        </body>
+      </html>
+    </Providers>
   );
 }
 
