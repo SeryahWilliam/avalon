@@ -16,14 +16,19 @@ export const authOptions = {
         await connectToDatabase();
 
         const user = await User.findOne({ email: credentials.email });
-        if (
-          user &&
-          (await bcrypt.compare(credentials.password, user.password))
-        ) {
-          return { id: user._id, name: user.username, email: user.email };
+        if (!user) {
+          throw new Error("No user found with this email");
         }
 
-        return null;
+        const isValid = await bcrypt.compare(
+          credentials.password,
+          user.password
+        );
+        if (!isValid) {
+          throw new Error("Invalid password");
+        }
+
+        return { id: user._id, name: user.username, email: user.email };
       },
     }),
   ],
