@@ -16,7 +16,7 @@ const ProtectedRoute = ({ children }) => {
     }
   }, [session, status, user, router]);
 
-  if (status === "loading") {
+  if (status === "loading" ) {
     return <Loader />;
   }
 
