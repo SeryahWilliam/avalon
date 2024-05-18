@@ -4,6 +4,7 @@ import Link from "next/link";
 import Search from "./Search";
 import CategoryDropDown from "./CategoryDropDown";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
+import SignOutButton from "./SignOutButton";
 
 function Nav() {
   return (
@@ -40,7 +41,9 @@ function Nav() {
           <Dropdown.Item>Settings</Dropdown.Item>
           <Dropdown.Item>Earnings</Dropdown.Item>
           <Dropdown.Divider />
-          <Dropdown.Item>Sign out</Dropdown.Item>
+          <Dropdown.Item>
+            <SignOutButton />
+          </Dropdown.Item>
         </Dropdown>
         <Navbar.Toggle />
       </div>
