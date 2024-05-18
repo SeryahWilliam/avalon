@@ -4,7 +4,7 @@ import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { setUser, setLoading, setError } from "@/redux/slices/authSlice";
+import { setUser, setLoading, setError } from "@/app/redux/slices/authSlice";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
