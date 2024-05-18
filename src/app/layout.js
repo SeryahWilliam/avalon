@@ -4,8 +4,6 @@ import Nav from "./components/Nav";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import MyFooter from "./components/Footer";
 import { Providers } from "./redux/provider";
-// import useSyncAuth from "./hooks/useSyncAuth";
-// import { SessionProvider } from "next-auth/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
