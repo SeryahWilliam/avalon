@@ -1,7 +1,12 @@
 import React from "react";
+import ProtectedRoute from "../components/ProtectedRoute";
 
 function page() {
-  return <div>Hello World!</div>;
+  return (
+    <ProtectedRoute>
+      <div>About</div>;
+    </ProtectedRoute>
+  );
 }
 
 export default page;

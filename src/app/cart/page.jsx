@@ -1,7 +1,12 @@
 import React from "react";
+import ProtectedRoute from "../components/ProtectedRoute";
 
 function ShoppingCart() {
-  return <div>ShoppingCart</div>;
+  return (
+    <ProtectedRoute>
+      <div>ShoppingCart</div>;
+    </ProtectedRoute>
+  );
 }
 
 export default ShoppingCart;
