@@ -1,42 +1,19 @@
+"use client";
 import React from "react";
 import ProtectedRoute from "../components/ProtectedRoute";
 import { Card, Button } from "flowbite-react";
+import { useDispatch, useSelector } from "react-redux";
+import { removeItem } from "../redux/slices/cartSlice";
 import Link from "next/link";
 
-const sampleItems = [
-  {
-    _id: "1",
-    name: "Handmade Necklace",
-    description: "A beautiful handmade necklace.",
-    price: "29.99",
-    images: [],
-    displayImage: "/images/accessories.jpeg",
-    rating: 4,
-    seller: "601d1c3b5f9b2a3b581f1a8b",
-    category: "601d1c3b5f9b2a3b581f1a8c",
-    createdAt: "2023-05-17T14:00:00.000Z",
-    quantity: 1,
-  },
-  {
-    _id: "2",
-    name: "Vintage Clock",
-    description: "A classic vintage clock.",
-    price: "49.99",
-    images: [],
-    displayImage: "/images/beauty.jpeg",
-    rating: 5,
-    seller: "601d1c3b5f9b2a3b581f1a8b",
-    category: "601d1c3b5f9b2a3b581f1a8c",
-    createdAt: "2023-05-17T14:00:00.000Z",
-    quantity: 2,
-  },
-];
-
 function ShoppingCart() {
-  const totalPrice = sampleItems.reduce(
-    (total, item) => total + parseFloat(item.price) * item.quantity,
-    0
-  );
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.items);
+  const totalPrice = useSelector((state) => state.cart.total);
+
+  const handleRemove = (id) => {
+    dispatch(removeItem(id));
+  };
 
   return (
     <ProtectedRoute>
@@ -46,7 +23,7 @@ function ShoppingCart() {
         </h1>
         <div className="flex flex-col md:flex-row">
           <div className="w-full md:w-3/4">
-            {sampleItems.map((item) => (
+            {cartItems.map((item) => (
               <Card key={item._id} className="mb-4">
                 <div className="flex items-center">
                   <img
@@ -58,14 +35,17 @@ function ShoppingCart() {
                     <Link href={`/items/${item._id}`}>
                       <h2 className="text-lg font-semibold">{item.name}</h2>
                     </Link>
-
                     <p className="text-gray-600">
                       ${parseFloat(item.price).toFixed(2)}
                     </p>
                     <p className="text-gray-600">Quantity: {item.quantity}</p>
                   </div>
                   <div className="flex-shrink-0">
-                    <Button color="failure" className="ml-4">
+                    <Button
+                      color="failure"
+                      className="ml-4"
+                      onClick={() => handleRemove(item._id)}
+                    >
                       Remove
                     </Button>
                   </div>
