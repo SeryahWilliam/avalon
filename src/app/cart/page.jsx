@@ -1,18 +1,37 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import ProtectedRoute from "../components/ProtectedRoute";
 import { Card, Button } from "flowbite-react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeItem } from "../redux/slices/cartSlice";
+import {
+  removeItem,
+  addItem,
+  updateItemQuantity,
+} from "../redux/slices/cartSlice";
+import { fetchCart, saveCart } from "../redux/actions/cartThunks";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 
 function ShoppingCart() {
   const dispatch = useDispatch();
+  const { data: session, status } = useSession();
   const cartItems = useSelector((state) => state.cart.items);
   const totalPrice = useSelector((state) => state.cart.total);
 
+  useEffect(() => {
+    if (status === "authenticated" && session) {
+      dispatch(fetchCart(session.user.id));
+    }
+  }, [session, status, dispatch]);
+
   const handleRemove = (id) => {
     dispatch(removeItem(id));
+    dispatch(saveCart({ userId: session.user.id, cart: { items: cartItems } }));
+  };
+
+  const handleUpdateQuantity = (id, quantity) => {
+    dispatch(updateItemQuantity({ _id: id, quantity }));
+    dispatch(saveCart({ userId: session.user.id, cart: { items: cartItems } }));
   };
 
   return (
@@ -24,27 +43,40 @@ function ShoppingCart() {
         <div className="flex flex-col md:flex-row">
           <div className="w-full md:w-3/4">
             {cartItems.map((item) => (
-              <Card key={item._id} className="mb-4">
+              <Card key={item.item._id} className="mb-4">
                 <div className="flex items-center">
                   <img
-                    src={item.displayImage}
-                    alt={item.name}
+                    src={item.item.displayImage}
+                    alt={item.item.name}
                     className="w-24 h-24 object-cover rounded-lg mr-4"
                   />
                   <div className="flex flex-col flex-grow">
-                    <Link href={`/items/${item._id}`}>
-                      <h2 className="text-lg font-semibold">{item.name}</h2>
+                    <Link href={`/items/${item.item._id}`}>
+                      <h2 className="text-lg font-semibold">
+                        {item.item.name}
+                      </h2>
                     </Link>
                     <p className="text-gray-600">
-                      ${parseFloat(item.price).toFixed(2)}
+                      ${parseFloat(item.item.price).toFixed(2)}
                     </p>
                     <p className="text-gray-600">Quantity: {item.quantity}</p>
+                    <input
+                      type="number"
+                      value={item.quantity}
+                      onChange={(e) =>
+                        handleUpdateQuantity(
+                          item.item._id,
+                          parseInt(e.target.value)
+                        )
+                      }
+                      className="w-16 mt-2"
+                    />
                   </div>
                   <div className="flex-shrink-0">
                     <Button
                       color="failure"
                       className="ml-4"
-                      onClick={() => handleRemove(item._id)}
+                      onClick={() => handleRemove(item.item._id)}
                     >
                       Remove
                     </Button>
