@@ -94,11 +94,11 @@ function ShoppingCart() {
               </div>
               <div className="flex justify-between mb-4">
                 <span>Shipping</span>
-                <span>$5.00</span>
+                <span>{totalPrice ? "$5.00" : "-"}</span>
               </div>
               <div className="flex justify-between mb-4 font-semibold">
                 <span>Total</span>
-                <span>${(totalPrice + 5).toFixed(2)}</span>
+                <span>${(totalPrice ?  totalPrice + 5 : 0).toFixed(2)}</span>
               </div>
               <Button className="w-full bg-blue-800 hover:bg-blue-900 text-white">
                 Checkout
