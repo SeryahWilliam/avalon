@@ -3,11 +3,7 @@ import React, { useEffect } from "react";
 import ProtectedRoute from "../components/ProtectedRoute";
 import { Card, Button } from "flowbite-react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  removeItem,
-  addItem,
-  updateItemQuantity,
-} from "../redux/slices/cartSlice";
+import { removeItem, updateItemQuantity } from "../redux/slices/cartSlice";
 import { fetchCart, saveCart } from "../redux/actions/cartThunks";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
@@ -98,7 +94,7 @@ function ShoppingCart() {
               </div>
               <div className="flex justify-between mb-4 font-semibold">
                 <span>Total</span>
-                <span>${(totalPrice ?  totalPrice + 5 : 0).toFixed(2)}</span>
+                <span>${(totalPrice ? totalPrice + 5 : 0).toFixed(2)}</span>
               </div>
               <Button className="w-full bg-blue-800 hover:bg-blue-900 text-white">
                 Checkout

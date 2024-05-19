@@ -1,8 +1,24 @@
 "use client";
 import React from "react";
 import { Card } from "flowbite-react";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "../redux/slices/cartSlice";
+import { saveCart } from "../redux/actions/cartThunks";
+import { useSession } from "next-auth/react";
 
 function ProductCard({ product_data }) {
+  const dispatch = useDispatch();
+  const { data: session } = useSession();
+  const cartItems = useSelector((state) => state.cart.items);
+
+  const handleAddToCart = () => {
+    if (!session) {
+      return;
+    }
+    const itemToAdd = { item: product_data, quantity: 1 };
+    dispatch(addItem(itemToAdd));
+    dispatch(saveCart({ userId: session.user.id, cart: { items: cartItems } }));
+  };
   return (
     <Card
       className="max-w-sm w-1/4 m-2"
@@ -65,6 +81,7 @@ function ProductCard({ product_data }) {
         </span>
         <a
           href="/cart"
+          onClick={handleAddToCart}
           className="rounded-lg w-40 h-12 bg-cyan-700 px-5 py-2.5 text-center text-md font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800"
         >
           Add to cart
