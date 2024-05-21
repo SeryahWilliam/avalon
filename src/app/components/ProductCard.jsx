@@ -17,8 +17,13 @@ function ProductCard({ product_data }) {
     }
     const itemToAdd = { item: product_data, quantity: 1 };
     dispatch(addItem(itemToAdd));
-    dispatch(saveCart({ userId: session.user.id, cart: { items: [...cartItems, itemToAdd] } })).then(() => {
-      dispatch(fetchCart(session.user.id)); 
+    dispatch(
+      saveCart({
+        userId: session.user.id,
+        cart: { items: [...cartItems, itemToAdd] },
+      })
+    ).then(() => {
+      dispatch(fetchCart(session.user.id));
       router.push("/cart");
     });
   };
@@ -28,7 +33,7 @@ function ProductCard({ product_data }) {
       imgAlt={product_data.name}
       imgSrc={product_data.display_image}
     >
-      <a href="#">
+      <a href={`/items/${product_data._id}`}>
         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
           {product_data.name}
         </h5>
