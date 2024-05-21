@@ -11,24 +11,48 @@ export const authOptions = {
       credentials: {
         email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" },
+        username: { label: "Username", type: "text", optional: true },
+        isSignUp: { label: "Is SignUp", type: "boolean", optional: true },
       },
       async authorize(credentials) {
         await connectToDatabase();
 
-        const user = await User.findOne({ email: credentials.email });
-        if (!user) {
-          throw new Error("No user found with this email");
-        }
+        const { email, password, username, isSignUp } = credentials;
 
-        const isValid = await bcrypt.compare(
-          credentials.password,
-          user.password
-        );
-        if (!isValid) {
-          throw new Error("Invalid password");
-        }
+        if (isSignUp) {
+          // Registration process
+          const existingUser = await User.findOne({ email });
+          if (existingUser) {
+            throw new Error("User already exists");
+          }
 
-        return { id: user._id, name: user.username, email: user.email };
+          const hashedPassword = await bcrypt.hash(password, 10);
+          const newUser = new User({
+            username,
+            email,
+            password: hashedPassword,
+          });
+
+          await newUser.save();
+          return {
+            id: newUser._id,
+            name: newUser.username,
+            email: newUser.email,
+          };
+        } else {
+          // Login process
+          const user = await User.findOne({ email });
+          if (!user) {
+            throw new Error("No user found with this email");
+          }
+
+          const isValid = await bcrypt.compare(password, user.password);
+          if (!isValid) {
+            throw new Error("Invalid password");
+          }
+
+          return { id: user._id, name: user.username, email: user.email };
+        }
       },
     }),
   ],
