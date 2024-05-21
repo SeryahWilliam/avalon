@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 import { faker } from "@faker-js/faker";
 import Item from "./models/Item.js";
 import User from "./models/User.js";
@@ -12,7 +13,7 @@ await connectToDatabase();
 
 function generateRating() {
   const wholeNumber = faker.number.int({ min: 1, max: 5 });
-  const addHalf = faker.datatype.boolean();
+  const addHalf = wholeNumber < 5 && faker.datatype.boolean();
   return addHalf ? wholeNumber + 0.5 : wholeNumber;
 }
 
