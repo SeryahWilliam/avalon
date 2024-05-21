@@ -26,3 +26,40 @@ export async function GET(req) {
     );
   }
 }
+
+export async function POST(req) {
+  await connectToDatabase();
+
+  try {
+    const {
+      name,
+      description,
+      price,
+      images,
+      displayImage,
+      rating,
+      seller,
+      category,
+    } = await req.json();
+
+    const newItem = new Item({
+      name,
+      description,
+      price,
+      images,
+      displayImage,
+      rating,
+      seller,
+      category,
+    });
+
+    await newItem.save();
+
+    return NextResponse.json(newItem, { status: 201 });
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Error creating item", error: error.message },
+      { status: 500 }
+    );
+  }
+}
