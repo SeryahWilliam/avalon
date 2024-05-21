@@ -7,11 +7,17 @@ function SignupForm() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(null);
   const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
 
     const result = await signIn("credentials", {
       redirect: false,
@@ -84,6 +90,23 @@ function SignupForm() {
             className="border border-gray-300 focus:border-blue-500 focus:ring-blue-500"
           />
         </div>
+        <div>
+          <div className="mb-2 block">
+            <Label
+              htmlFor="confirmPassword"
+              value="Confirm Password"
+              className="text-blue-800"
+            />
+          </div>
+          <TextInput
+            id="confirmPassword"
+            type="password"
+            required
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            className="border border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+          />
+        </div>
         <Button
           type="submit"
           className="mt-4 bg-blue-800 hover:bg-blue-900 text-white"
@@ -92,6 +115,14 @@ function SignupForm() {
         </Button>
       </form>
       {error && <p className="mt-4 text-red-500">{error}</p>}
+      <div className="mt-4 text-center">
+        <p className="text-sm text-gray-600">
+          Already have an account?{" "}
+          <a href="/auth/signin" className="text-blue-800 hover:underline">
+            Sign in
+          </a>
+        </p>
+      </div>
     </div>
   );
 }
