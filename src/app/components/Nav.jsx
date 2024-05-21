@@ -48,7 +48,7 @@ function Nav() {
               {session.user.email}
             </span>
           </Dropdown.Header>
-          <Dropdown.Item href="#">Seller</Dropdown.Item>
+          <Dropdown.Item href="/seller">Seller</Dropdown.Item>
           <Dropdown.Item href={`/profile/${session.user.name}`}>
             Profile
           </Dropdown.Item>
