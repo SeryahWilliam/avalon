@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { fetchCart, saveCart } from "../actions/cartThunks";
 
 const initialState = {
@@ -68,8 +68,13 @@ const cartSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-      .addCase(saveCart.fulfilled, (state) => {
+      .addCase(saveCart.fulfilled, (state, action) => {
         state.loading = false;
+        state.items = action.payload.items;
+        state.total = action.payload.items.reduce(
+          (total, item) => total + parseFloat(item.item.price) * item.quantity,
+          0
+        );
         state.error = null;
       })
       .addCase(saveCart.rejected, (state, action) => {

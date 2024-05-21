@@ -18,7 +18,6 @@ export async function GET(req) {
 
   try {
     const items = await Item.find(query);
-    console.log(items);
     return NextResponse.json(items, { status: 200 });
   } catch (error) {
     return NextResponse.json(

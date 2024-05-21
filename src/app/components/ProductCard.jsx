@@ -17,7 +17,10 @@ function ProductCard({ product_data }) {
     }
     const itemToAdd = { item: product_data, quantity: 1 };
     dispatch(addItem(itemToAdd));
-    dispatch(saveCart({ userId: session.user.id, cart: { items: cartItems } }));
+    dispatch(saveCart({ userId: session.user.id, cart: { items: [...cartItems, itemToAdd] } })).then(() => {
+      dispatch(fetchCart(session.user.id)); 
+      router.push("/cart");
+    });
   };
   return (
     <Card
