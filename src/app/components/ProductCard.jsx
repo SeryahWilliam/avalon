@@ -33,6 +33,11 @@ function ProductCard({ product_data }) {
       imgAlt={product_data.name}
       imgSrc={product_data.display_image}
     >
+      <img
+        src={product_data.displayImage}
+        alt={product_data.name}
+        className="w-full h-48 object-cover"
+      />
       <a href={`/items/${product_data._id}`}>
         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
           {product_data.name}
