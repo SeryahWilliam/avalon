@@ -6,6 +6,8 @@ import Search from "./Search";
 import CategoryDropDown from "./CategoryDropDown";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import SignOutButton from "./SignOutButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 function Nav() {
   const { data: session, status } = useSession();
@@ -73,14 +75,14 @@ function Nav() {
         >
           About
         </Navbar.Link>
-        <Navbar.Link
+        {/* <Navbar.Link
           className="text-white hover:!text-orange-500"
           href="/favorites"
         >
           Favorites
-        </Navbar.Link>
+        </Navbar.Link> */}
         <Navbar.Link className="text-white hover:!text-orange-500" href="/cart">
-          Cart
+          <FontAwesomeIcon icon={faShoppingCart} size="xl" />
         </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
