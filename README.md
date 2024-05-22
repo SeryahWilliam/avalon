@@ -8,9 +8,9 @@ Avalon is a full-stack web application built with React, Express, and MongoDB. I
 
 ## Tech Stack
 
-**Front-end:** React, Redux, TailwindCSS
+**Front-end:** React, Redux, TailwindCSS, Flowbite
 
-**Backend:** Expressjs
+**Backend:** Nextjs
 
 **Database**: MongoDB
 
@@ -96,3 +96,7 @@ npm start
 ```
 
 The frontend will start on http://localhost:3000
+
+#### Deployed App
+
+https://avalon-a9gr0on1y-seryahwilliams-projects.vercel.app/
