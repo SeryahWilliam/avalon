@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../components/ProductCard";
 import Loader from "../components/Loader";
 import { fetchSearchResults } from "../redux/actions/searchThunks";
+import Filters from "../components/Filters";
+import Sort from "../components/Sort";
 
 function SearchResultsPage() {
   const searchParams = useSearchParams();
@@ -24,6 +26,10 @@ function SearchResultsPage() {
 
   return (
     <div className="container mx-auto p-6 min-h-[66vh]">
+      <div className="flex justify-between">
+        <Filters />
+        <Sort />
+      </div>
       <h1 className="text-3xl font-semibold mb-6 text-center text-custom-orange">
         Search Results
       </h1>
