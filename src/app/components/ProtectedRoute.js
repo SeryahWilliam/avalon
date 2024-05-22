@@ -11,12 +11,12 @@ const ProtectedRoute = ({ children }) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (!session && status !== "loading" && !user) {
+    if (!session && status !== "loading") {
       router.push("/auth/signin");
     }
   }, [session, status, user, router]);
 
-  if (status === "loading" ) {
+  if (status === "loading") {
     return <Loader />;
   }
 

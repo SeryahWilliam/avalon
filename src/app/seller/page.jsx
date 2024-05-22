@@ -49,7 +49,7 @@ function SellerProfile() {
 
       if (response.ok) {
         const data = await response.json();
-        router.push(`/items/${data._id}`); // Redirect to the new item's page
+        router.push(`/items/${data._id}`);
       } else {
         const errorData = await response.json();
         setMessage(`Error: ${errorData.message}`);
