@@ -2,9 +2,13 @@
 import { Button, Drawer, Checkbox, Label, RangeSlider } from "flowbite-react";
 import React, { useState } from "react";
 import { BsFilter } from "react-icons/bs";
+import useCategories from "../hooks/useCategories";
 
 function Filters() {
   const [isOpen, setIsOpen] = useState(false);
+  const { categories, status } = useCategories();
+  console.log(categories); // Ensure categories are being fetched
+
   const handleClose = () => setIsOpen(false);
 
   return (
@@ -30,14 +34,22 @@ function Filters() {
             <div>
               <h3 className="text-lg font-semibold">Category</h3>
               <div className="flex flex-col space-y-2">
-                <Checkbox id="handmade" label="Handmade" />
-                <Checkbox id="vintage" label="Vintage" />
-                <Checkbox id="craftSupplies" label="Craft Supplies" />
-                <Checkbox id="jewelry" label="Jewelry" />
-                <Checkbox id="clothing" label="Clothing" />
-                <Checkbox id="homeDecor" label="Home Decor" />
-                <Checkbox id="art" label="Art" />
-                <Checkbox id="toys" label="Toys" />
+                {status === "loading" && <p>Loading categories...</p>}
+                {status === "failed" && <p>Failed to load categories</p>}
+                {status === "succeeded" && categories.length === 0 && (
+                  <p>No categories found.</p>
+                )}
+                {status === "succeeded" &&
+                  categories.map((category) => (
+                    <div key={category._id} className="flex items-center">
+                      <Checkbox
+                        id={category._id}
+                        name={category._id}
+                        className="mr-2"
+                      />
+                      <Label htmlFor={category._id}>{category.name}</Label>
+                    </div>
+                  ))}
               </div>
             </div>
 
@@ -45,12 +57,38 @@ function Filters() {
             <div>
               <h3 className="text-lg font-semibold">Subcategory</h3>
               <div className="flex flex-col space-y-2">
-                <Checkbox id="accessories" label="Accessories" />
-                <Checkbox id="bags" label="Bags" />
-                <Checkbox id="knitwear" label="Knitwear" />
-                <Checkbox id="pottery" label="Pottery" />
-                <Checkbox id="prints" label="Prints" />
-                <Checkbox id="stationery" label="Stationery" />
+                <div className="flex items-center">
+                  <Checkbox
+                    id="accessories"
+                    name="accessories"
+                    className="mr-2"
+                  />
+                  <Label htmlFor="accessories">Accessories</Label>
+                </div>
+                <div className="flex items-center">
+                  <Checkbox id="bags" name="bags" className="mr-2" />
+                  <Label htmlFor="bags">Bags</Label>
+                </div>
+                <div className="flex items-center">
+                  <Checkbox id="knitwear" name="knitwear" className="mr-2" />
+                  <Label htmlFor="knitwear">Knitwear</Label>
+                </div>
+                <div className="flex items-center">
+                  <Checkbox id="pottery" name="pottery" className="mr-2" />
+                  <Label htmlFor="pottery">Pottery</Label>
+                </div>
+                <div className="flex items-center">
+                  <Checkbox id="prints" name="prints" className="mr-2" />
+                  <Label htmlFor="prints">Prints</Label>
+                </div>
+                <div className="flex items-center">
+                  <Checkbox
+                    id="stationery"
+                    name="stationery"
+                    className="mr-2"
+                  />
+                  <Label htmlFor="stationery">Stationery</Label>
+                </div>
               </div>
             </div>
 
@@ -72,11 +110,26 @@ function Filters() {
             <div>
               <h3 className="text-lg font-semibold">Rating</h3>
               <div className="flex flex-col space-y-2">
-                <Checkbox id="rating1" label="1 Star & Up" />
-                <Checkbox id="rating2" label="2 Stars & Up" />
-                <Checkbox id="rating3" label="3 Stars & Up" />
-                <Checkbox id="rating4" label="4 Stars & Up" />
-                <Checkbox id="rating5" label="5 Stars" />
+                <div className="flex items-center">
+                  <Checkbox id="rating1" name="rating1" className="mr-2" />
+                  <Label htmlFor="rating1">1 Star & Up</Label>
+                </div>
+                <div className="flex items-center">
+                  <Checkbox id="rating2" name="rating2" className="mr-2" />
+                  <Label htmlFor="rating2">2 Stars & Up</Label>
+                </div>
+                <div className="flex items-center">
+                  <Checkbox id="rating3" name="rating3" className="mr-2" />
+                  <Label htmlFor="rating3">3 Stars & Up</Label>
+                </div>
+                <div className="flex items-center">
+                  <Checkbox id="rating4" name="rating4" className="mr-2" />
+                  <Label htmlFor="rating4">4 Stars & Up</Label>
+                </div>
+                <div className="flex items-center">
+                  <Checkbox id="rating5" name="rating5" className="mr-2" />
+                  <Label htmlFor="rating5">5 Stars</Label>
+                </div>
               </div>
             </div>
 
