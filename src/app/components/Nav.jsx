@@ -1,11 +1,25 @@
 "use client";
 import React from "react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Search from "./Search";
 import CategoryDropDown from "./CategoryDropDown";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
+import SignOutButton from "./SignOutButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 function Nav() {
+  const { data: session, status } = useSession();
+
+  if (status === "loading") {
+    return null;
+  }
+
+  if (!session) {
+    return null;
+  }
+
   return (
     <Navbar className="bg-blue-800 " fluid>
       <Navbar.Brand href="/">
@@ -31,16 +45,19 @@ function Nav() {
           }
         >
           <Dropdown.Header>
-            <span className="block text-sm">Bonnie Green</span>
+            <span className="block text-sm">{session.user.name}</span>
             <span className="block truncate text-sm font-medium">
-              name@flowbite.com
+              {session.user.email}
             </span>
           </Dropdown.Header>
-          <Dropdown.Item>Dashboard</Dropdown.Item>
-          <Dropdown.Item>Settings</Dropdown.Item>
-          <Dropdown.Item>Earnings</Dropdown.Item>
+          <Dropdown.Item href="/seller">Seller</Dropdown.Item>
+          <Dropdown.Item href={`/profile/${session.user.name}`}>
+            Profile
+          </Dropdown.Item>
           <Dropdown.Divider />
-          <Dropdown.Item>Sign out</Dropdown.Item>
+          <Dropdown.Item>
+            <SignOutButton />
+          </Dropdown.Item>
         </Dropdown>
         <Navbar.Toggle />
       </div>
@@ -58,14 +75,14 @@ function Nav() {
         >
           About
         </Navbar.Link>
-        <Navbar.Link
+        {/* <Navbar.Link
           className="text-white hover:!text-orange-500"
           href="/favorites"
         >
           Favorites
-        </Navbar.Link>
-        <Navbar.Link className="text-white hover:!text-orange-500" href="cart">
-          Cart
+        </Navbar.Link> */}
+        <Navbar.Link className="text-white hover:!text-orange-500" href="/cart">
+          <FontAwesomeIcon icon={faShoppingCart} size="xl" />
         </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
