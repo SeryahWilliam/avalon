@@ -7,7 +7,7 @@ import useCategories from "../hooks/useCategories";
 function Filters() {
   const [isOpen, setIsOpen] = useState(false);
   const { categories, status } = useCategories();
-  console.log(categories); // Ensure categories are being fetched
+  const [priceRange, setPriceRange] = useState(50);
 
   const handleClose = () => setIsOpen(false);
 
@@ -96,12 +96,13 @@ function Filters() {
             <div>
               <h3 className="text-lg font-semibold">Price Range</h3>
               <div className="flex flex-col space-y-2">
-                <Label htmlFor="priceRange">Price Range: $10 - $1000</Label>
+                <Label htmlFor="priceRange">Price Range: ${priceRange}</Label>
                 <RangeSlider
                   id="priceRange"
                   min={10}
                   max={1000}
-                  defaultValue={50}
+                  value={priceRange}
+                  onChange={(e) => setPriceRange(e.target.value)}
                 />
               </div>
             </div>
