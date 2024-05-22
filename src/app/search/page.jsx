@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../components/ProductCard";
@@ -25,24 +25,26 @@ function SearchResultsPage() {
   }
 
   return (
-    <div className="container mx-auto p-6 min-h-[66vh]">
-      <div className="flex justify-between">
-        <Filters />
-        <Sort />
+    <Suspense fallback={<Loader />}>
+      <div className="container mx-auto p-6 min-h-[66vh]">
+        <div className="flex justify-between">
+          <Filters />
+          <Sort />
+        </div>
+        <h1 className="text-3xl font-semibold mb-6 text-center text-custom-orange">
+          Search Results
+        </h1>
+        <div className="flex flex-wrap justify-center">
+          {items.length === 0 ? (
+            <p>No items found.</p>
+          ) : (
+            items.map((item) => (
+              <ProductCard key={item._id} product_data={item} />
+            ))
+          )}
+        </div>
       </div>
-      <h1 className="text-3xl font-semibold mb-6 text-center text-custom-orange">
-        Search Results
-      </h1>
-      <div className="flex flex-wrap justify-center">
-        {items.length === 0 ? (
-          <p>No items found.</p>
-        ) : (
-          items.map((item) => (
-            <ProductCard key={item._id} product_data={item} />
-          ))
-        )}
-      </div>
-    </div>
+    </Suspense>
   );
 }
 
