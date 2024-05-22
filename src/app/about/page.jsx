@@ -24,13 +24,14 @@ function About() {
             including Javascript, React, Python, Express etc. I am passionate
             about technology and constantly strive to learn new things. In my
             spare time, I enjoy working on personal projects, contributing to
-            open source, and staying updated with the latest tech trends.
+            open source (new hobby), and staying updated with the latest tech
+            trends.
           </p>
           <p className="text-gray-700 mb-4">
             When I'm not coding, you can find me exploring new places, reading
-            books on software development, or playing video games. I believe in
-            continuous improvement and always look forward to challenging myself
-            with new and exciting projects.
+            books on software development, or cooking. I believe in continuous
+            improvement and always look forward to challenging myself with new
+            and exciting projects.
           </p>
           <div className="flex justify-center md:justify-start">
             <a
