@@ -32,7 +32,7 @@ function ShoppingCart() {
 
   return (
     <ProtectedRoute>
-      <div className="container mx-auto p-6">
+      <div className="container mx-auto h-[66vh] p-6">
         <h1 className="text-3xl font-semibold mb-6 text-center text-custom-orange">
           Shopping Cart
         </h1>
